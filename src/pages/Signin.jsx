@@ -7,7 +7,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { signin } from "../services/authServices";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import Grid from "@mui/material/Grid";
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function SignIn() {
     const res = await signin(email, password);
     console.log(res);
     if (res.session) {
-      navigate("/");
+      navigate("/home");
     }
 
     if (res?.message) {
@@ -79,11 +80,11 @@ export default function SignIn() {
               {error}
             </Typography>
           )}
-          {/* <Grid container>
+           <Grid container>
             <Grid item>
               <Link to="/signup">{"Don't have an account? Sign Up"}</Link>
             </Grid>
-          </Grid> */}
+          </Grid> 
         </Box>
       </Box>
     </Container>
